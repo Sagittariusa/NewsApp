@@ -48,7 +48,8 @@ public class NewsAdapter extends ArrayAdapter<News>{
         if (authorName.contains("empty")) {
             contributor.setText("");
         } else {
-            contributor.setText(authorName);
+            String byAuthor = "by " + authorName;
+            contributor.setText(byAuthor);
         }
 
         /**

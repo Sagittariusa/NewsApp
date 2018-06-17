@@ -26,12 +26,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     private static final int NEWS_LOADER_ID = 1;
 
-    /**
-     * JSON link for a Guardian query
-     */
-    private static final String GUARDIAN_REQUEST_URL =
-           "https://content.guardianapis.com/search?&show-tags=contributor&api-key=test";
-
     private NewsAdapter mAdapter;
 
     private TextView mEmptyStateTextView;
@@ -96,7 +90,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle bundle) {
         // Create a new loader for the given URL.
-        return new NewsLoader(this, GUARDIAN_REQUEST_URL);
+        return new NewsLoader(this, getResources().getString(R.string.GUARDIAN_REQUEST_URL));
     }
 
     @Override

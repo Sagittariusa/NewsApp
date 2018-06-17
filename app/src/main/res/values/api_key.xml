@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="GUARDIAN_REQUEST_URL"><![CDATA[https://content.guardianapis.com/search?&show-tags=contributor&lang=en&api-key=04d0e877-1846-4680-bdeb-85c24ac0be7b]]></string>
+</resources>
