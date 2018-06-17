@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class NewsAdapter extends ArrayAdapter<News>{
 
-    private static final String LOG_TAG = NewsActivity.class.getName();
-
     public NewsAdapter(Activity context, ArrayList<News> earthquakes){
 
         super(context, 0, earthquakes);
@@ -45,11 +43,13 @@ public class NewsAdapter extends ArrayAdapter<News>{
          * Set Author name
          */
         String authorName = currentListItem.getAuthor();
-
-        if (contributor == "empty")
-
         TextView contributor = listItemView.findViewById(R.id.item_contributor);
-        contributor.setText(authorName);
+
+        if (authorName.contains("empty")) {
+            contributor.setText("");
+        } else {
+            contributor.setText(authorName);
+        }
 
         /**
          * Set Date text
