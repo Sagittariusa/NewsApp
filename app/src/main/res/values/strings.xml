@@ -10,7 +10,7 @@
 
     <string name="settings_keyword_label">Keyword</string>
     <string name="settings_keyword_key" translatable="false">default_keyword</string>
-    <string name="settings_keyword_default" translatable="false">contributor</string>
+    <string name="settings_keyword_default" translatable="false">game</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_category_label">Category</string>

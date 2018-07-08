@@ -30,7 +30,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     private static final int NEWS_LOADER_ID = 1;
 
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?";
 
     //https://content.guardianapis.com/search?&show-tags=contributor&lang=en&api-key=04d0e877-1846-4680-bdeb-85c24ac0be7b
 
@@ -138,8 +138,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Append query parameter and its value. For example, the `format=geojson`
         uriBuilder.appendQueryParameter("api-key", "04d0e877-1846-4680-bdeb-85c24ac0be7b");
         uriBuilder.appendQueryParameter("lang", "en");
-        uriBuilder.appendQueryParameter("tag", keyword);
-        uriBuilder.appendQueryParameter("sectionName", category);
+        uriBuilder.appendQueryParameter("q", keyword);
+        uriBuilder.appendQueryParameter("section", category);
 
         // Create a new loader for the given URL.
         return new NewsLoader(this, uriBuilder.toString());
@@ -156,6 +156,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Clear the adapter of previous articles data.
         mAdapter.clear();
+
+        mAdapter.notifyDataSetChanged();
 
         // If there is a valid list of {@link Articles}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
