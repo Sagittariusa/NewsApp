@@ -3,10 +3,15 @@
     <string-array name="settings_order_by_labels">
         <item>@string/settings_filter_sports_label</item>
         <item>@string/settings_filter_politics_label</item>
+        <item>@string/settings_filter_world_label</item>
+        <item>@string/settings_filter_music_label</item>
     </string-array>
 
     <string-array name="settings_order_by_values">
         <item>@string/settings_filter_sports_value</item>
         <item>@string/settings_filter_politics_value</item>
+        <item>@string/settings_filter_world_value</item>
+        <item>@string/settings_filter_music_value</item>
     </string-array>
+
 </resources>

@@ -127,7 +127,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         String category  = sharedPrefs.getString(
                 getString(R.string.settings_category_key),
                 getString(R.string.settings_category_default)
-        );
+        ); 
 
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
@@ -136,6 +136,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameter and its value. For example, the `format=geojson`
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("api-key", "04d0e877-1846-4680-bdeb-85c24ac0be7b");
         uriBuilder.appendQueryParameter("lang", "en");
         uriBuilder.appendQueryParameter("q", keyword);

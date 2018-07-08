@@ -25,4 +25,12 @@
     <string name="settings_filter_politics_label">Politics</string>
     <string name="settings_filter_politics_value" translatable="false">politics</string>
 
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_filter_world_label">World</string>
+    <string name="settings_filter_world_value" translatable="false">world</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_filter_music_label">Music</string>
+    <string name="settings_filter_music_value" translatable="false">music</string>
+
 </resources>
