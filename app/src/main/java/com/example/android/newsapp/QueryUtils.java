@@ -38,7 +38,7 @@ public final class QueryUtils {
      * Return a list of {@link News} objects that has been built up from
      * parsing a JSON response.
      */
-    public static List<News> fetchEarthquakeData(String requestUrl) {
+    public static List<News> fetchNewsData(String requestUrl) {
         //Create URL object
         URL url = createUrl(requestUrl);
 

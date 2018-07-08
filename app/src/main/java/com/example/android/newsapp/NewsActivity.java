@@ -4,11 +4,15 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,9 +30,32 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
      */
     private static final int NEWS_LOADER_ID = 1;
 
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=";
+
+    //https://content.guardianapis.com/search?&show-tags=contributor&lang=en&api-key=04d0e877-1846-4680-bdeb-85c24ac0be7b
+
     private NewsAdapter mAdapter;
 
     private TextView mEmptyStateTextView;
+
+    @Override
+    // This method initialize the contents of the Activity's options menu.
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the Options Menu we specified in XML
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +116,33 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle bundle) {
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String keyword = sharedPrefs.getString(
+                getString(R.string.settings_keyword_key),
+                getString(R.string.settings_keyword_default));
+
+        String category  = sharedPrefs.getString(
+                getString(R.string.settings_category_key),
+                getString(R.string.settings_category_default)
+        );
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameter and its value. For example, the `format=geojson`
+        uriBuilder.appendQueryParameter("api-key", "04d0e877-1846-4680-bdeb-85c24ac0be7b");
+        uriBuilder.appendQueryParameter("lang", "en");
+        uriBuilder.appendQueryParameter("tag", keyword);
+        uriBuilder.appendQueryParameter("sectionName", category);
+
         // Create a new loader for the given URL.
-        return new NewsLoader(this, getResources().getString(R.string.GUARDIAN_REQUEST_URL));
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
