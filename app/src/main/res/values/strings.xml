@@ -18,8 +18,8 @@
     <string name="settings_category_default" translatable="false">@string/settings_filter_sports_value</string>
 
     <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
-    <string name="settings_filter_sports_label">Sports</string>
-    <string name="settings_filter_sports_value" translatable="false">sports</string>
+    <string name="settings_filter_sports_label">Sport</string>
+    <string name="settings_filter_sports_value" translatable="false">sport</string>
 
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_filter_politics_label">Politics</string>
