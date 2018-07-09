@@ -137,7 +137,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Append query parameter and its value. For example, the `format=geojson`
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("api-key", "04d0e877-1846-4680-bdeb-85c24ac0be7b");
+        uriBuilder.appendQueryParameter("api-key", "test");
         uriBuilder.appendQueryParameter("lang", "en");
         uriBuilder.appendQueryParameter("q", keyword);
         uriBuilder.appendQueryParameter("section", category);
